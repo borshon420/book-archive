@@ -7,7 +7,7 @@ const loadBook = () => {
     console.log(searchText)
     searchField.value = ''
     document.getElementById('error-message2').style.display = 'none'
-    if(searchText == ''){
+    if(searchText === ''){
         document.getElementById('error-message2').style.display = 'block'
     }else {
         const url = `
@@ -23,13 +23,14 @@ const loadBook = () => {
     
 const displayBook = books => {
     const bookElement = document.getElementById('search-result')
+    bookElement.textContent = ''
     console.log(books)
     document.getElementById('error-message1').style.display = 'none'
     if(books.length === 0) {
         document.getElementById('error-message1').style.display = 'block'
     }
     else {
-        for(const book of books){
+        books.forEach(book => {
             console.log(book.title)
             const div = document.createElement('div')
             div.classList.add('col')
@@ -44,8 +45,8 @@ const displayBook = books => {
             </div>
             `;
             bookElement.appendChild(div)
-    
-        }
+        })
+        
     }
     
     
