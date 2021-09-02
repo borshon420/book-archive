@@ -1,10 +1,11 @@
+// error handle
 document.getElementById('error-message1').style.display = 'none'
 document.getElementById('error-message2').style.display = 'none'
 
+// This function will work for search input
 const loadBook = () => {
     const searchField = document.getElementById('search-field')
     const searchText = searchField.value 
-    console.log(searchText)
     searchField.value = ''
     document.getElementById('error-message2').style.display = 'none'
     if(searchText === ''){
@@ -13,25 +14,23 @@ const loadBook = () => {
         const url = `
         http://openlibrary.org/search.json?q=${searchText}
     `
-    // console.log(url)
     fetch(url)
     .then(res => res.json())
     .then(data => displayBook(data.docs))
     }
         
 }
-    
+
+//This function will work to show search result
 const displayBook = books => {
     const bookElement = document.getElementById('search-result')
     bookElement.textContent = ''
-    console.log(books)
     document.getElementById('error-message1').style.display = 'none'
     if(books.length === 0) {
         document.getElementById('error-message1').style.display = 'block'
     }
     else {
         books.forEach(book => {
-            console.log(book.title)
             const div = document.createElement('div')
             div.classList.add('col')
             div.innerHTML = `
@@ -51,5 +50,3 @@ const displayBook = books => {
     
     
 }
-
-// ${book.title}554106
