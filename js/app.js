@@ -12,7 +12,7 @@ const loadBook = () => {
         document.getElementById('error-message2').style.display = 'block'
     }else {
         const url = `
-        http://openlibrary.org/search.json?q=${searchText}
+        https://openlibrary.org/search.json?q=${searchText}
     `
     fetch(url)
     .then(res => res.json())
